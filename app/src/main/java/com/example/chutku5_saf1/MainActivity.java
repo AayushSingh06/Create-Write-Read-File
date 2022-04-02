@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                    // fileURL="content://com.android.providers.downloads.documents/document/50";
                     try {
                         String fileData=readRemoteFile(fileURL);
-                        Log.i("STORAGE_TAG","File Data ::: "+fileURL);
+                        Log.i("STORAGE_TAG","File Data ::: "+fileData);
                     }
                     catch (Exception e){
                         e.printStackTrace();
@@ -97,7 +97,8 @@ public class MainActivity extends AppCompatActivity {
             ParcelFileDescriptor parcelFileDescriptor=this.getContentResolver().openFileDescriptor(uri,"w");
             FileOutputStream fileOutputStream=new FileOutputStream(parcelFileDescriptor.getFileDescriptor());
             EditText editText=(EditText) findViewById(R.id.editContent);
-            String dataToWrite=editText.getText().toString();
+            EditText editText2=(EditText) findViewById(R.id.editContent2);
+            String dataToWrite=editText2.getText().toString();
             fileOutputStream.write(dataToWrite.getBytes());
             fileOutputStream.close();
             parcelFileDescriptor.close();
